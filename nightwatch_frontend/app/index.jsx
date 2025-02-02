@@ -3,9 +3,6 @@ import React from 'react';
 import { useRouter } from 'expo-router';
 import { useFonts } from 'expo-font';
 
-
-
-
 const RootLayout = () => {
   const router = useRouter();
 
@@ -22,13 +19,6 @@ const RootLayout = () => {
       source={require('../assets/StarsBackground.png')} 
       style={styles.background}
     >
-<<<<<<< Updated upstream
-
-
-      
-
-=======
->>>>>>> Stashed changes
       <View style={styles.container}>
 
       <Text style={styles.header}>NightWatch</Text>
@@ -36,11 +26,7 @@ const RootLayout = () => {
         <View style={styles.buttonContainer}>
           <TouchableOpacity 
             style={styles.button} 
-<<<<<<< Updated upstream
-            onPress={() => router.push('/home')} // Navigate to "home" page
-=======
             onPress={() => router.push('/vibration')} // Navigate to "home" page
->>>>>>> Stashed changes
           >
             <Text style={styles.buttonText}>Press to Start</Text>
           </TouchableOpacity>
