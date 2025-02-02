@@ -1,17 +1,35 @@
 import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
 import React from 'react';
 import { useRouter } from 'expo-router';
+import { useFonts } from 'expo-font';
+
+
+
 
 const RootLayout = () => {
   const router = useRouter();
+
+  const [fontsLoaded] = useFonts({
+    'Skarleto': require('../assets/fonts/SkarletoRegular-9Mvzy.otf'),
+  })
+
+  if (!fontsLoaded) {
+    return null; // Return null while fonts load (previously used AppLoading)
+  }
 
   return (
     <ImageBackground 
       source={require('../assets/StarsBackground.png')} 
       style={styles.background}
     >
+
+
+      
+
       <View style={styles.container}>
-        <Text style={styles.header}>Header</Text>
+
+      <Text style={styles.header}>NightWatch</Text>
+        
         <View style={styles.buttonContainer}>
           <TouchableOpacity 
             style={styles.button} 
@@ -21,10 +39,6 @@ const RootLayout = () => {
           </TouchableOpacity>
         </View>
 
-        {/* ✅ Card at the Bottom */}
-        <View style={styles.card}>
-          <Text style={styles.cardText}>This is a Bottom Card</Text>
-        </View>
       </View>
     </ImageBackground>
   );
@@ -44,9 +58,14 @@ const styles = StyleSheet.create({
     paddingVertical: 50,
   },
   header: {
-    fontSize: 24,
+    position: 'absolute',
+    top: 175
+    , // Move it near the top
+    fontSize: 80,
     fontWeight: 'bold',
     color: 'white',
+    textAlign: 'center',
+    fontFamily: "Skarleto" 
   },
   buttonContainer: {
     flex: 1,
@@ -84,6 +103,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
   },
+
+  
+
 });
 
 export default RootLayout;
