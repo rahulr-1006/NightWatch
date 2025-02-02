@@ -2,6 +2,12 @@ import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react
 import React from 'react';
 import { useRouter } from 'expo-router';
 import { useFonts } from 'expo-font';
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
 
 const RootLayout = () => {
   const router = useRouter();
