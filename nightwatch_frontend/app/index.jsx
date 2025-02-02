@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, Vibration } from 'react-native';
 import React from 'react';
 import { useRouter } from 'expo-router';
 import { useFonts } from 'expo-font';
@@ -14,6 +14,12 @@ const RootLayout = () => {
     return null; // Return null while fonts load (previously used AppLoading)
   }
 
+
+  // const handlePress = () => {
+  //   Vibration.vibrate(200); // Vibrate for 200ms
+  //   router.push('/vibration'); // Navigate to another page
+  // };
+
   return (
     <ImageBackground 
       source={require('../assets/StarsBackground.png')} 
@@ -24,9 +30,12 @@ const RootLayout = () => {
       <Text style={styles.header}>NightWatch</Text>
         
         <View style={styles.buttonContainer}>
+          
           <TouchableOpacity 
             style={styles.button} 
-            onPress={() => router.push('/vibration')} // Navigate to "home" page
+
+            // onPress={handlePress}
+             onPress={() => router.push('/vibration')} // Navigate to "home" page
           >
             <Text style={styles.buttonText}>Press to Start</Text>
           </TouchableOpacity>
