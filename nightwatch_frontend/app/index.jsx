@@ -38,9 +38,9 @@ const RootLayout = () => {
             style={styles.button} 
 
             // onPress={handlePress}
-             onPress={() => router.push('/vibration')} // Navigate to "home" page
+             onPress={() => router.push('/vibration')}
           >
-            <Text style={styles.buttonText}>Press to Start</Text>
+            <Text style={styles.buttonText}>Activate NightWatch</Text>
           </TouchableOpacity>
         </View>
 
@@ -58,13 +58,13 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'space-between', // Keeps items spread out
+    justifyContent: 'space-between', 
     alignItems: 'center',
     paddingVertical: 50,
   },
   header: {
     position: 'absolute',
-    top: 175
+    top: 100
     , // Move it near the top
     fontSize: 80,
     fontWeight: 'bold',
@@ -73,10 +73,12 @@ const styles = StyleSheet.create({
     fontFamily: "Skarleto" 
   },
   buttonContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  position: "absolute", 
+  bottom: 80,
+  left: 0,             
+  right: 0,             
+  alignItems: "center", 
+},
   button: {
     backgroundColor: '#007bff',
     paddingVertical: 20,
@@ -88,7 +90,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  /* ✅ Bottom Card Styling */
+
   card: {
     position: 'absolute', // Fixes it at the bottom
     bottom: 20, // Distance from the bottom
