@@ -1,4 +1,4 @@
-  import { CameraView, useCameraPermissions } from "expo-camera";
+import { CameraView, useCameraPermissions } from "expo-camera";
   import { useState, useRef, useEffect } from "react";
   import { Button, StyleSheet, Text, TouchableOpacity, View, Vibration } from "react-native";
   import { useRouter } from 'expo-router';
@@ -25,10 +25,12 @@
     let interval2 = null;
 
     if (result === "Yes") {
+      window.console.log("Person is close");
       interval2 = setInterval(() => {
         Vibration.vibrate([200, 100, 200]); // Pulse vibration
       }, 1000);
     } else {
+      window.console.log("Person NOT close");
       Vibration.cancel();
     }
 
@@ -97,7 +99,7 @@
             style={styles.button} 
             onPress={() => router.push('/')}
           >
-            <Text style={styles.buttonText}>End Recording</Text>
+            <Text style={styles.buttonText}>Stop NightWatch</Text>
           </TouchableOpacity>
 
           
