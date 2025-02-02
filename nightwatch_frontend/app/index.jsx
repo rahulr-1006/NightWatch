@@ -3,6 +3,9 @@ import React from 'react';
 import { useRouter } from 'expo-router';
 import { useFonts } from 'expo-font';
 
+
+
+
 const RootLayout = () => {
   const router = useRouter();
 
