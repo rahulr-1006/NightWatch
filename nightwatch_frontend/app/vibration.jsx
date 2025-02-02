@@ -1,12 +1,14 @@
   import { CameraView, useCameraPermissions } from "expo-camera";
   import { useState, useRef, useEffect } from "react";
   import { Button, StyleSheet, Text, TouchableOpacity, View, Vibration } from "react-native";
+  import { useRouter } from 'expo-router';
 
   export default function App() {
     const [facing, setFacing] = useState("back");
     const [permission, requestPermission] = useCameraPermissions();
     const [result, setResult] = useState("");
     const cameraRef = useRef(null);
+    const router = useRouter();
 
     useEffect(() => {
   if (!permission?.granted) return;
@@ -87,16 +89,21 @@
       <View style={styles.container}>
         <CameraView style={styles.camera} facing={facing} ref={cameraRef}>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
+            {/* <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
               <Text style={styles.text}>Flip Camera</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+
+          <TouchableOpacity 
+            style={styles.button} 
+            onPress={() => router.push('/')}
+          >
+            <Text style={styles.buttonText}>End Recording</Text>
+          </TouchableOpacity>
+
+          
           </View>
         </CameraView>
-        <View style={styles.resultContainer}>
-          <Text style={styles.resultText}>{result}</Text>
 
-
-        </View>
       </View>
     );
   }
@@ -110,15 +117,18 @@
       flex: 1,
     },
     buttonContainer: {
+      justifyContent: 'flex-end', 
+      alignItems: 'center',
+      paddingBottom: 100,  
+
       flex: 1,
-      flexDirection: "row",
-      backgroundColor: "transparent",
-      margin: 64,
+
     },
     button: {
-      flex: 1,
-      alignSelf: "flex-end",
-      alignItems: "center",
+      backgroundColor: '#F60202',
+      paddingVertical: 15,
+      paddingHorizontal: 30,
+      borderRadius: 10,
     },
     text: {
       fontSize: 24,
@@ -136,4 +146,11 @@
       fontWeight: "bold",
       color: "white",
     },
+    buttonText: {
+      color: 'white',
+      fontSize: 18,
+      fontWeight: 'bold',
+    }
+
+
   });
