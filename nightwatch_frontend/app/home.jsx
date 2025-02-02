@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
 
 
   buttonContainer: {
-    position: 'absolute', // Fixes the button at a specific position
-    bottom: 70, // Distance from the bottom of the screen
+    position: 'absolute', 
+    bottom: 70, 
 
 
   },
