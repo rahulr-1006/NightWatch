@@ -5,26 +5,37 @@
   export default function App() {
     const [facing, setFacing] = useState("back");
     const [permission, requestPermission] = useCameraPermissions();
-    const [result, setResult] = useState("Waiting...");
+    const [result, setResult] = useState("");
     const cameraRef = useRef(null);
 
-    // ✅ Ensure all hooks run unconditionally
     useEffect(() => {
-      if (!permission?.granted) return; // Don't run effect until permission is granted
+  if (!permission?.granted) return;
 
-      const interval = setInterval(() => {
-        captureAndSendImage();
+  const interval = setInterval(() => {
+    captureAndSendImage();
+  }, 1000);
+
+  return () => clearInterval(interval);
+}, [permission?.granted]); // ✅ Runs when permission is granted
+
+  // ✅ Separate effect that responds to `result` updates
+  useEffect(() => {
+    let interval2 = null;
+
+    if (result === "Yes") {
+      interval2 = setInterval(() => {
+        Vibration.vibrate([200, 100, 200]); // Pulse vibration
       }, 1000);
+    } else {
+      Vibration.cancel();
+    }
 
-      return () => clearInterval(interval);
-    }, [permission?.granted]); // Only run when permission is granted
+    return () => {
+      if (interval2) clearInterval(interval2); // ✅ Cleanup interval when result changes
+      Vibration.cancel();
+    };
+  }, [result]); // ✅ Runs whenever `result` updates
 
-
-    useEffect(() => {
-      if (result === "Yes") {
-        Vibration.vibrate(200); // Vibrates for 500ms
-      }
-    }, [result]);
 
     async function captureAndSendImage() {
       if (cameraRef.current) {
@@ -39,7 +50,7 @@
           });
 
           // http://3.15.170.197:8000/detect/
-          const response = await fetch("url", {
+          const response = await fetch("http://3.15.170.197:8000/detect/", {
             method: "POST",
             body: formData,
             headers: { "Content-Type": "multipart/form-data" },
