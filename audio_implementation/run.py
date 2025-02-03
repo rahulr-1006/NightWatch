@@ -13,7 +13,6 @@ yolo_process = None
 
 
 EMAIL_ADDRESS = "rahulrengan4098@gmail.com"
-EMAIL_PASSWORD = "wghdcoatxbrpqqem"
 
 
 emergency_contacts = [
