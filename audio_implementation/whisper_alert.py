@@ -11,7 +11,6 @@ import os
 
 SIREN_PATH = os.path.abspath("../my-app/assets/siren.mp3") 
 EMAIL_ADDRESS = "rahulrengan4098@gmail.com"
-EMAIL_PASSWORD = "wghdcoatxbrpqqem"
 
 emergency_contacts = [
     "5104748042@vtext.com",  
